@@ -2,8 +2,16 @@ const router = require('express').Router();
 
 const db = require('./users-model');
 
+const bcrypt = require('bcryptjs');
+
+const restricted = require('../config/Authentication');
+
 router.post('/register', (req, res) => {
   let user = req.body;
+
+  const hash = bcrypt.hashSync(user.password, 10);
+
+  user.password = hash;
 
   db.add(user)
     .then(saved => {
@@ -20,10 +28,10 @@ router.post('/login', (req, res) => {
   db.findBy({ username })
     .first()
     .then(user => {
-      if (user) {
-        res.status(200).json({ message: `Welcome ${user.username}!`})
+      if (user && bcrypt.compareSync(password, user.password)) {
+        return res.status(200).json({ message: `welcome ${user.username}!` })
       } else {
-        res.status(401).json({ message: 'Invalid Credentials' })
+        res.status(401).json({ message: 'Invalid Credentials log in' })
       }
     })
     .catch(error => {
@@ -31,7 +39,7 @@ router.post('/login', (req, res) => {
     })
 })
 
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
   db.find()
     .then(users => {
       res.json(users);
