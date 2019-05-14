@@ -6,7 +6,7 @@ const restricted = require('../auth/restricted-middleware');
 
 
 
-router.get('/', restricted, (req, res) => {
+router.get('/', (req, res) => {
   db.find()
     .then(users => {
       res.json(users);
@@ -15,3 +15,5 @@ router.get('/', restricted, (req, res) => {
 });
 
 module.exports = router;
+
+// add restricted to the pathway to enable authentication build
