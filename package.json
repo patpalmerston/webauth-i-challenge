@@ -1,0 +1,38 @@
+{
+  "name": "webauth-i-challenge",
+  "version": "1.0.0",
+  "description": "- Authentication.\r - Express Middleware.\r - Password Hashing.\r - Sessions\r - Cookies",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patpalmerston/webauth-i-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patpalmerston/webauth-i-challenge/issues"
+  },
+  "homepage": "https://github.com/patpalmerston/webauth-i-challenge#readme",
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^1.19.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "bcryptjs": "^2.4.3",
+    "connect-session-knex": "^1.4.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "helmet": "^3.18.0",
+    "knex": "^0.16.5",
+    "morgan": "^1.9.1",
+    "react-router": "^5.0.0",
+    "sqlite3": "^4.0.8"
+  }
+}
